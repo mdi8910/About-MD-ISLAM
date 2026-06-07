@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD NABIL ISLAM | Portfolio</title>
+    <style>
+        /* General Reset and Variables */
+        :root {
+            --primary-color: #007acc;
+            --secondary-color: #2c3e50;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, var(--secondary-color), #34495e);
+            color: white;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .location-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            position: relative;
+            font-size: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Specific Styles for Info */
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            nav { flex-direction: column; gap: 10px; }
+            .nav-links a { margin: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">MD NABIL ISLAM</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#details">Details</a>
+            <a href="#skills">Skills</a>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header>
+        <h1>MD Nabil Islam</h1>
+        <p>Aspiring Mechanical Engineer & Maker</p>
+        <div class="location-badge">
+            📍 Originally Bangladesh | Currently based in New York, USA
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="card" style="text-align: left;">
+                <p>Hi there! I am a student at <strong>Claremont International High School</strong>. I have roots in Bangladesh, but currently, I live and study in the heart of New York, USA.</p>
+                <br>
+                <p>I am a dedicated member of <strong>FTC Team Steel Titans (#28021)</strong>. My passion lies in understanding how things work and building innovative solutions. In the future, I aspire to become a <strong>Mechanical Engineer</strong> and contribute to the world of technology and design.</p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="card-grid">
+                
+                <!-- Skill 1 -->
+                <div class="card">
+                    <div class="skill-icon">⚙️</div>
+                    <h3>3D Modeling</h3>
+                    <p>Proficient in <strong>Fusion 360</strong>. I can design complex parts, assemble mechanisms, and prepare files for 3D printing or manufacturing.</p>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="card">
+                    <div class="skill-icon">💻</div>
+                    <h3>Coding</h3>
+                    <p>I have a strong foundation in programming logic. I can write, debug, and structure code to solve problems and automate tasks.</p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="card">
+                    <div class="skill-icon">🛠️</div>
+                    <h3>Robotics (FTC)</h3>
+                    <p>Active member of <strong>Steel Titans 28021</strong>. Experience with robot design, build, and competition strategy.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Education / Team Section -->
+        <section id="details">
+            <h2 class="section-title">Education & Affiliations</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Student</h3>
+                    <p>Claremont International High School</p>
+                </div>
+                <div class="card">
+                    <h3>Robotics Team</h3>
+                    <p>FTC Team Steel Titans #28021</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 MD Nabil Islam. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Simple smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
