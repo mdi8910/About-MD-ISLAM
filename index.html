@@ -1,397 +1,693 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MD NABIL ISLAM | Portfolio</title>
-    <style>
-        /* General Reset and Variables */
-        :root {
-            --primary-color: #007acc;
-            --secondary-color: #2c3e50;
-            --bg-color: #f4f7f6;
-            --text-color: #333;
-            --card-bg: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Navigation */
-        nav {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a {
-            margin-left: 20px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Hero Section */
-        header {
-            text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(135deg, var(--secondary-color), #34495e);
-            color: white;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .location-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 5px 15px;
-            border-radius: 20px;
-            margin-top: 20px;
-            font-size: 0.9rem;
-        }
-        .hero-img {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid white;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD Nabil Islam — Mechanical Engineer in Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --bg:            #090d13;
+  --bg-2:          #0d1420;
+  --panel:         #0f1720;
+  --panel-2:       #121b26;
+  --line:          #1d2b38;
+  --line-bright:   rgba(0, 229, 255, .18);
+  --cyan:          #00e5ff;
+  --cyan-dim:      #0891a8;
+  --amber:         #ff8a3d;
+  --text:          #e7eef4;
+  --text-dim:      #8ea0ae;
+  --text-faint:    #4f6270;
+  --font-display:  'Orbitron', sans-serif;
+  --font-mono:     'JetBrains Mono', monospace;
+  --font-body:     'Inter', sans-serif;
 }
 
-        /* Main Container */
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+*{ margin:0; padding:0; box-sizing:border-box; }
 
-        /* Section Styling */
-        section {
-            margin-bottom: 60px;
-        }
+html{ scroll-behavior:smooth; }
 
-        .section-title {
-            text-align: center;
-            color: var(--secondary-color);
-            margin-bottom: 30px;
-            position: relative;
-            font-size: 2rem;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--primary-color);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        /* Cards */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-            text-align: center;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .contact-card {
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  line-height:1.65;
+  overflow-x:hidden;
+  position:relative;
 }
 
-.contact-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+/* Blueprint grid backdrop, fixed across whole page */
+body::before{
+  content:'';
+  position:fixed; inset:0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size:64px 64px;
+  opacity:.35;
+  pointer-events:none;
+  z-index:0;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 40%, transparent 90%);
 }
 
-.contact-card a {
-    color: var(--primary-color);
-    font-weight: 500;
-    text-decoration: none;
+a{ color:inherit; text-decoration:none; }
+
+::selection{ background:var(--cyan); color:#00131a; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
 }
 
-.contact-card a:hover {
-    text-decoration: underline;
+/* ============================================================
+   SHARED PATTERNS
+   ============================================================ */
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--cyan);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::before{
+  content:'';
+  width:22px; height:1px;
+  background:var(--cyan);
 }
 
-        /* Specific Styles for Info */
-        .skill-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--secondary-color);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            header h1 { font-size: 2rem; }
-            nav { flex-direction: column; gap: 10px; }
-            .nav-links a { margin: 0 10px; }
-        }
-        @media (max-width: 768px) {
-
-    body {
-        font-size: 14px;
-    }
-
-    header {
-        padding: 60px 15px;
-    }
-
-    header h1 {
-        font-size: 1.6rem;
-    }
-
-    header p {
-        font-size: 0.9rem;
-    }
-
-    .hero-img {
-        width: 85px;
-        height: 85px;
-    }
-
-    .section-title {
-        font-size: 1.4rem;
-    }
-
-    .card {
-        padding: 20px;
-    }
-
-    .card h3 {
-        font-size: 1.1rem;
-    }
-
-    .location-badge {
-        font-size: 0.75rem;
-        padding: 4px 10px;
-    }
+.section-head{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:44px;
 }
-    </style>
+.section-head h2{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(1.5rem, 3vw, 2.1rem);
+  letter-spacing:.02em;
+  color:var(--text);
+}
+
+/* CAD-style corner brackets, the recurring signature motif */
+.blueprint-card{
+  position:relative;
+  background:linear-gradient(180deg, var(--panel), var(--panel-2));
+  border:1px solid var(--line);
+  padding:32px;
+}
+.blueprint-card::before,
+.blueprint-card::after,
+.blueprint-card .bc-tl,
+.blueprint-card .bc-br{
+  content:'';
+  position:absolute;
+  width:14px; height:14px;
+  border:1.5px solid var(--cyan-dim);
+  opacity:.7;
+  transition:border-color .25s, opacity .25s;
+}
+.blueprint-card::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+.blueprint-card::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+.blueprint-card:hover::before,
+.blueprint-card:hover::after{ border-color:var(--cyan); opacity:1; }
+
+.tag-id{
+  position:absolute;
+  top:10px; right:14px;
+  font-family:var(--font-mono);
+  font-size:.62rem;
+  letter-spacing:.1em;
+  color:var(--text-faint);
+}
+
+/* Reveal on scroll */
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+.reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+nav{
+  position:sticky; top:0; z-index:100;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:18px 6%;
+  background:rgba(9,13,19,.78);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.logo{
+  font-family:var(--font-mono);
+  font-size:.85rem;
+  letter-spacing:.15em;
+  color:var(--text);
+  display:flex; align-items:center; gap:10px;
+}
+.logo .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 8px var(--cyan);
+  animation:pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+
+.nav-links{ display:flex; gap:6px; font-family:var(--font-mono); font-size:.78rem; }
+.nav-links a{
+  padding:8px 14px;
+  color:var(--text-dim);
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  position:relative;
+  transition:color .2s;
+}
+.nav-links a::after{
+  content:'';
+  position:absolute; left:14px; right:14px; bottom:4px;
+  height:1px; background:var(--cyan);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .25s;
+}
+.nav-links a:hover{ color:var(--cyan); }
+.nav-links a:hover::after{ transform:scaleX(1); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+header.hero{
+  position:relative;
+  z-index:1;
+  padding:90px 6% 70px;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:40px;
+  align-items:center;
+  max-width:1180px;
+  margin:0 auto;
+}
+
+.hero-coords{
+  font-family:var(--font-mono);
+  font-size:.7rem;
+  color:var(--text-faint);
+  letter-spacing:.08em;
+  margin-bottom:22px;
+}
+.hero-coords span{ color:var(--cyan-dim); }
+
+.hero-text h1{
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:clamp(2.1rem, 5vw, 3.4rem);
+  line-height:1.1;
+  letter-spacing:.01em;
+  color:var(--text);
+}
+.hero-text h1 .accent{ color:var(--cyan); }
+
+.hero-role{
+  margin-top:18px;
+  font-family:var(--font-mono);
+  font-size:1rem;
+  color:var(--text-dim);
+  min-height:1.6em;
+}
+.hero-role .cursor{
+  display:inline-block;
+  width:9px; height:1.05em;
+  background:var(--cyan);
+  margin-left:2px;
+  vertical-align:text-bottom;
+  animation:blink 1s step-end infinite;
+}
+@keyframes blink{ 50%{ opacity:0; } }
+
+.hero-desc{
+  margin-top:22px;
+  max-width:460px;
+  color:var(--text-dim);
+  font-size:.98rem;
+}
+
+.hero-badges{
+  margin-top:30px;
+  display:flex; gap:12px; flex-wrap:wrap;
+}
+.badge{
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  letter-spacing:.05em;
+  padding:8px 14px;
+  border:1px solid var(--line);
+  color:var(--text-dim);
+  display:flex; align-items:center; gap:8px;
+}
+.badge::before{ content:'▸'; color:var(--cyan); }
+
+/* Hero visual: rotating gear cluster schematic */
+.hero-visual{
+  position:relative;
+  aspect-ratio:1/1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.gear-ring{
+  position:absolute; inset:0;
+  border:1px dashed var(--line-bright);
+  border-radius:50%;
+  animation:spin 40s linear infinite;
+}
+.gear-ring.ring2{ inset:14%; animation-duration:28s; animation-direction:reverse; border-style:solid; border-color:var(--line); }
+@keyframes spin{ to{ transform:rotate(360deg); } }
+
+.hero-photo-wrap{
+  position:relative;
+  width:64%; aspect-ratio:1/1;
+  border-radius:50%;
+  padding:6px;
+  background:conic-gradient(from 0deg, var(--cyan), transparent 30%, transparent 70%, var(--cyan));
+  animation:spin 6s linear infinite;
+}
+.hero-photo-wrap img{
+  width:100%; height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  background:var(--panel);
+  border:4px solid var(--bg);
+}
+
+.gear-svg{
+  position:absolute;
+  color:var(--cyan-dim);
+  opacity:.55;
+}
+.gear-svg.g1{ top:2%; right:6%; width:46px; animation:spin 18s linear infinite; }
+.gear-svg.g2{ bottom:4%; left:0%; width:32px; animation:spin 14s linear infinite reverse; }
+
+/* ============================================================
+   MAIN CONTAINER
+   ============================================================ */
+.container{
+  position:relative; z-index:1;
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 6%;
+}
+
+section{ padding:80px 0; border-top:1px solid var(--line); }
+section:first-of-type{ border-top:none; }
+
+/* ---------------- About ---------------- */
+.about-grid{
+  display:grid;
+  grid-template-columns:70px 1fr;
+  gap:0 32px;
+}
+.about-index{
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  color:var(--text-faint);
+  writing-mode:vertical-rl;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+.about-copy p{ color:var(--text-dim); margin-bottom:16px; max-width:640px; }
+.about-copy strong{ color:var(--text); font-weight:600; }
+.about-copy .highlight{ color:var(--cyan); font-weight:500; }
+
+/* ---------------- Skills ---------------- */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(270px, 1fr));
+  gap:24px;
+}
+
+.skill-icon{
+  font-size:1.6rem;
+  width:44px; height:44px;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--line);
+  color:var(--cyan);
+  margin-bottom:18px;
+}
+
+.blueprint-card h3{
+  font-family:var(--font-display);
+  font-size:1.02rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  margin-bottom:10px;
+  color:var(--text);
+}
+.blueprint-card p{ color:var(--text-dim); font-size:.92rem; }
+.blueprint-card p strong{ color:var(--cyan); font-weight:600; }
+
+.meter{
+  margin-top:18px;
+  height:4px;
+  background:var(--line);
+  position:relative;
+  overflow:hidden;
+}
+.meter i{
+  position:absolute; inset:0 auto 0 0;
+  width:0%;
+  background:linear-gradient(90deg, var(--cyan-dim), var(--cyan));
+  transition:width 1.1s cubic-bezier(.2,.8,.2,1);
+}
+.meter-label{
+  display:flex; justify-content:space-between;
+  font-family:var(--font-mono); font-size:.65rem;
+  color:var(--text-faint); margin-top:6px;
+}
+
+/* ---------------- Timeline (Education) ---------------- */
+.timeline{
+  position:relative;
+  padding-left:28px;
+}
+.timeline::before{
+  content:'';
+  position:absolute; left:5px; top:6px; bottom:6px;
+  width:1px;
+  background:repeating-linear-gradient(var(--line-bright) 0 6px, transparent 6px 12px);
+}
+.t-item{
+  position:relative;
+  padding:0 0 32px 26px;
+}
+.t-item:last-child{ padding-bottom:0; }
+.t-item::before{
+  content:'';
+  position:absolute; left:-27px; top:4px;
+  width:9px; height:9px;
+  background:var(--bg);
+  border:2px solid var(--cyan-dim);
+  border-radius:50%;
+  transition:border-color .2s, box-shadow .2s;
+}
+.t-item:hover::before{ border-color:var(--cyan); box-shadow:0 0 10px var(--cyan); }
+.t-item .t-tag{
+  font-family:var(--font-mono);
+  font-size:.66rem;
+  color:var(--amber);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:4px;
+  display:block;
+}
+.t-item h3{ font-size:1rem; font-weight:600; color:var(--text); }
+.t-item p{ color:var(--text-dim); font-size:.88rem; margin-top:2px; }
+
+/* ---------------- Contact ---------------- */
+.contact-card{ text-align:left; }
+.contact-card h3{ display:flex; align-items:center; gap:10px; font-size:1rem; }
+.contact-card .ic{ font-size:1.2rem; }
+.contact-card a.link{
+  color:var(--cyan);
+  font-family:var(--font-mono);
+  font-size:.88rem;
+  border-bottom:1px solid transparent;
+  transition:border-color .2s;
+}
+.contact-card a.link:hover{ border-color:var(--cyan); }
+.contact-card p{ margin-top:10px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{
+  position:relative; z-index:1;
+  border-top:1px solid var(--line);
+  padding:28px 6%;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:10px;
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  color:var(--text-faint);
+  letter-spacing:.05em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 860px){
+  header.hero{ grid-template-columns:1fr; padding-top:60px; text-align:left; }
+  .hero-visual{ max-width:220px; margin:20px 0 0; }
+  .about-grid{ grid-template-columns:1fr; }
+  .about-index{ writing-mode:horizontal-tb; margin-bottom:14px; }
+}
+@media (max-width: 600px){
+  nav{ flex-direction:column; gap:12px; padding:16px 5%; }
+  section{ padding:56px 0; }
+  .card-grid{ grid-template-columns:1fr; }
+}
+
+/* Keyboard focus visibility */
+a:focus-visible, button:focus-visible{
+  outline:2px solid var(--cyan);
+  outline-offset:3px;
+}
+</style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">MD NABIL ISLAM</div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-              <a href="#details">Details</a>
-        </div>
-    </nav>
+<nav>
+  <div class="logo"><span class="dot"></span>NABIL.ISLAM // DESIGN.LAB</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#details">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-    <!-- Hero Header -->
-   <header>
-    <img src="Screenshot 2026-06-06 11.08.12 PM.png" alt="MD Nabil Islam" class="hero-img">
-
-    <h1>MD Nabil Islam</h1>
-    <p>In the future, I want to become a <strong>Mechanical Engineer</strong>.</p>
-
-    <div class="location-badge">
-        📍 New York City, USA
+<header class="hero">
+  <div class="hero-text">
+    <div class="hero-coords">LAT <span>40.8448° N</span> &nbsp;·&nbsp; LON <span>73.8648° W</span> &nbsp;·&nbsp; THE BRONX, NYC</div>
+    <h1>MD Nabil <span class="accent">Islam</span></h1>
+    <div class="hero-role">&gt; <span id="typedRole"></span><span class="cursor"></span></div>
+    <p class="hero-desc">Student engineer building toward a future in <strong>Mechanical Engineering</strong> — designing in CAD, coding robots, and competing with FTC Team <strong>Steel Titans #28021</strong>.</p>
+    <div class="hero-badges">
+      <span class="badge">Fusion 360</span>
+      <span class="badge">FTC Robotics</span>
+      <span class="badge">HTML / CSS / JS</span>
+      <span class="badge">ASU Early College</span>
     </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="gear-ring"></div>
+    <div class="gear-ring ring2"></div>
+    <svg class="gear-svg g1" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+    <svg class="gear-svg g2" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+    <div class="hero-photo-wrap">
+      <img src="Screenshot 2026-06-06 11.08.12 PM.png" alt="MD Nabil Islam">
+    </div>
+  </div>
 </header>
 
-    <!-- Main Content -->
-    <div class="container">
+<div class="container">
 
-        <!-- About Section -->
-        <section id="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="card" style="text-align: left;">
-                Hi, I'm MD Nabil Islam. I'm a student at Claremont International High School in New York City. Originally from Bangladesh, I moved to the United States and continue to pursue my interests in engineering and technology.</p>
-                <br>
-                <p>I enjoy figuring out how things work, designing new ideas, and turning those ideas into real projects. As a member of FTC Team Steel Titans (#28021), I've had the opportunity to work on robotics, problem-solving, and teamwork in a competitive environment.</p>
-                <br>
-                <p>My main interests are mechanical engineering, robotics, 3D design, and programming. I hope to study Mechanical Engineering in the future and use my skills to create innovative technologies that make a difference.</p>
-            </div>
-        </section>
+  <!-- About -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-index reveal">FILE // 001</div>
+      <div>
+        <div class="section-head reveal">
+          <div class="eyebrow">Profile</div>
+          <h2>About Me</h2>
+        </div>
+        <div class="about-copy reveal">
+          <p>Hi, I'm <strong>MD Nabil Islam</strong>, a student at <strong>Claremont International High School</strong> in New York City. Originally from Bangladesh, I moved to the United States and continue to pursue my interests in engineering and technology.</p>
+          <p>I enjoy figuring out how things work, designing new ideas, and turning those ideas into real projects. As a member of <span class="highlight">FTC Team Steel Titans (#28021)</span>, I've had the opportunity to work on robotics, problem-solving, and teamwork in a competitive environment.</p>
+          <p>My main interests are mechanical engineering, robotics, 3D design, and programming. I hope to study <strong>Mechanical Engineering</strong> in the future and use my skills to create innovative technologies that make a difference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2 class="section-title">Skills & Expertise</h2>
-            <div class="card-grid">
-                
-                <!-- Skill 1 -->
-                <div class="card">
-                    <div class="skill-icon">⚙️</div>
-                    <h3>3D Modeling</h3>
-                    <p>Proficient in <strong>Fusion 360</strong>. I can design complex parts, assemble mechanisms, and prepare files for 3D printing or manufacturing.</p>
-                </div>
-
-                <!-- Skill 2 -->
-                <div class="card">
-                    <div class="skill-icon">💻</div>
-                    <h3>Coding</h3>
-                    <p><p>I have experience in programming and enjoy building practical projects. I can design and develop websites using HTML, CSS, and JavaScript, and I also contribute to coding and programming for our FTC robotics team.</p></p>
-                </div>
-
-                <!-- Skill 3 -->
-                <div class="card">
-                    <div class="skill-icon">🛠️</div>
-                    <h3>Robotics (FTC)</h3>
-                    <p>Active member of <strong>Steel Titans 28021</strong>. Experience with robot design, build,code and competition strategy.</p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Education / Team Section -->
-        <section id="details">
-    <h2 class="section-title">Education & Affiliations</h2>
+  <!-- Skills -->
+  <section id="skills">
+    <div class="section-head reveal">
+      <div class="eyebrow">Capabilities</div>
+      <h2>Skills &amp; Expertise</h2>
+    </div>
     <div class="card-grid">
 
-         <div class="card">
-            <h3>Shaher Banu Ideal School and College</h3>
-            <p>Bangladesh — Pre-K to 2nd Grade</p>
-        </div>
+      <div class="blueprint-card reveal">
+        <span class="tag-id">SPEC-01</span>
+        <div class="skill-icon">⚙️</div>
+        <h3>3D Modeling</h3>
+        <p>Proficient in <strong>Fusion 360</strong>. I design complex parts, assemble mechanisms, and prepare files for 3D printing or manufacturing.</p>
+        <div class="meter"><i data-fill="88"></i></div>
+        <div class="meter-label"><span>Proficiency</span><span>88%</span></div>
+      </div>
 
-        <div class="card">
-            <h3>Amratali Government Primary School</h3>
-            <p>Bangladesh — 3rd Grade to 5th Grade</p>
-        </div>
+      <div class="blueprint-card reveal">
+        <span class="tag-id">SPEC-02</span>
+        <div class="skill-icon">💻</div>
+        <h3>Coding</h3>
+        <p>I build websites with <strong>HTML, CSS &amp; JavaScript</strong>, and contribute to code and programming for our FTC robotics team.</p>
+        <div class="meter"><i data-fill="78"></i></div>
+        <div class="meter-label"><span>Proficiency</span><span>78%</span></div>
+      </div>
 
-        <div class="card">
-            <h3>Barura Haji Nowab Ali Pilot High School</h3>
-            <p>Bangladesh —  6th Grade to 8th Grade</p>
-        </div>
-
-        <div class="card">
-            <h3>Claremont International High School</h3>
-            <p>New York, USA</p>
-        </div>
-
-        <div class="card">
-            <h3>Robotics Team</h3>
-            <p>FTC Team Steel Titans #28021</p>
-        </div>
-
-        <div class="card">
-            <h3>Early College Program</h3>
-            <p>Arizona State University (ASU)</p>
-        </div>
-
-        <div class="card">
-            <h3>Future Ready </h3>
-            <p>Member of Future Ready program</p>
-        </div>
+      <div class="blueprint-card reveal">
+        <span class="tag-id">SPEC-03</span>
+        <div class="skill-icon">🛠️</div>
+        <h3>Robotics (FTC)</h3>
+        <p>Active member of <strong>Steel Titans 28021</strong>. Experience with robot design, build, code, and competition strategy.</p>
+        <div class="meter"><i data-fill="82"></i></div>
+        <div class="meter-label"><span>Proficiency</span><span>82%</span></div>
+      </div>
 
     </div>
-</section>
+  </section>
 
+  <!-- Education / Affiliations -->
+  <section id="details">
+    <div class="section-head reveal">
+      <div class="eyebrow">Timeline</div>
+      <h2>Education &amp; Affiliations</h2>
     </div>
 
-    <section id="contact">
-    <h2 class="section-title">Contact</h2>
+    <div class="timeline">
+      <div class="t-item reveal">
+        <span class="t-tag">Bangladesh · Pre-K – 2nd Grade</span>
+        <h3>Shaher Banu Ideal School and College</h3>
+      </div>
+      <div class="t-item reveal">
+        <span class="t-tag">Bangladesh · 3rd – 5th Grade</span>
+        <h3>Amratali Government Primary School</h3>
+      </div>
+      <div class="t-item reveal">
+        <span class="t-tag">Bangladesh · 6th – 8th Grade</span>
+        <h3>Barura Haji Nowab Ali Pilot High School</h3>
+      </div>
+      <div class="t-item reveal">
+        <span class="t-tag">New York, USA</span>
+        <h3>Claremont International High School</h3>
+      </div>
+      <div class="t-item reveal">
+        <span class="t-tag">Early College Program</span>
+        <h3>Arizona State University (ASU)</h3>
+        <p>Earning college credit alongside high school coursework.</p>
+      </div>
+      <div class="t-item reveal">
+        <span class="t-tag">Competitive Robotics</span>
+        <h3>FTC Team Steel Titans #28021</h3>
+        <p>Robot design, build, code, and strategy.</p>
+      </div>
+      <div class="t-item reveal">
+        <span class="t-tag">Mentorship</span>
+        <h3>Future Ready Program</h3>
+        <p>Member, building career and college readiness skills.</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-head reveal">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Contact</h2>
+    </div>
     <div class="card-grid">
 
-        <div class="card contact-card">
-            <h3>📧 Email</h3>
-            <p><a href="mailto:imd243850@gmail.com" >imd243850@gmail.com</a></p>
-        </div>
+      <div class="blueprint-card contact-card reveal">
+        <h3><span class="ic">📧</span> Email</h3>
+        <p><a class="link" href="mailto:imd243850@gmail.com">imd243850@gmail.com</a></p>
+      </div>
 
-        <div class="card contact-card">
-            <h3>💻 GitHub</h3>
-            <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=imd243850@gmail.com" target="_blank">
-    imd243850@gmail.com
-</a></p>
-        </div>
+      <div class="blueprint-card contact-card reveal">
+        <h3><span class="ic">✉️</span> Send a message</h3>
+        <p><a class="link" href="https://mail.google.com/mail/?view=cm&fs=1&to=imd243850@gmail.com" target="_blank" rel="noopener">Compose an email</a></p>
+      </div>
 
-        <div class="card contact-card">
-            <h3>📍 Location</h3>
-            <p>The Bronx, New York City, USA</p>
-        </div>
+      <div class="blueprint-card contact-card reveal">
+        <h3><span class="ic">📍</span> Location</h3>
+        <p>The Bronx, New York City, USA</p>
+      </div>
 
     </div>
-</section>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-    <p>&copy; 2025 MD Nabil Islam. Built with HTML, CSS & JavaScript.</p>
+</div>
+
+<footer>
+  <span>&copy; 2025 MD Nabil Islam</span>
+  <span>Built with HTML, CSS &amp; JavaScript</span>
 </footer>
 
-    <script>
-        // Simple smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+<script>
+  // Smooth scroll for in-page links
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const target = document.querySelector(a.getAttribute('href'));
+      if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+    });
+  });
+
+  // Typed role text
+  const roles = ['Future Mechanical Engineer', 'CAD Designer // Fusion 360', 'FTC Robotics Builder', 'Web Developer'];
+  const roleEl = document.getElementById('typedRole');
+  let ri = 0, ci = 0, deleting = false;
+
+  function typeLoop(){
+    const word = roles[ri];
+    if(!deleting){
+      ci++;
+      roleEl.textContent = word.slice(0, ci);
+      if(ci === word.length){ deleting = true; setTimeout(typeLoop, 1400); return; }
+    } else {
+      ci--;
+      roleEl.textContent = word.slice(0, ci);
+      if(ci === 0){ deleting = false; ri = (ri + 1) % roles.length; }
+    }
+    setTimeout(typeLoop, deleting ? 35 : 65);
+  }
+  typeLoop();
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.15 });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Skill meter fill on visibility
+  const meterIO = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const bar = entry.target.querySelector('.meter i');
+        if(bar){ bar.style.width = bar.dataset.fill + '%'; }
+        meterIO.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.4 });
+  document.querySelectorAll('.blueprint-card').forEach(el=>{
+    if(el.querySelector('.meter')) meterIO.observe(el);
+  });
+</script>
+
 </body>
 </html>
